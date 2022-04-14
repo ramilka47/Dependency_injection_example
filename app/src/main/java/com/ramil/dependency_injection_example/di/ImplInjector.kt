@@ -1,5 +1,6 @@
 package com.ramil.dependency_injection_example.di
 
+import com.ramil.dependency_injection_example.di.dependencies.DependencySendService
 import com.ramil.dependency_injection_example.domain.ISendService
 import java.lang.Exception
 
@@ -11,12 +12,11 @@ class ImplInjector(builder : Builder) : Injector {
     override fun getISendService(): ISendService =
         dependencySendService.iSendService
 
-    class Builder(){
+    class Builder{
         private var dependencySendService : DependencySendService? = null
 
-        fun dependencySendService(iSendService: ISendService) : Builder {
-            DependencySendService(iSendService)
-            return this
+        fun dependencySendService(iSendService: ISendService) : Builder = this.apply {
+            dependencySendService = DependencySendService(iSendService)
         }
 
         fun getDependencySendService() = dependencySendService

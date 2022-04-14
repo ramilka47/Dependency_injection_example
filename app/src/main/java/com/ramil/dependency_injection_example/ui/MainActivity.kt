@@ -17,5 +17,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        iSendService.send(this::class.java.name)
+        toSplashFragment()
     }
+
+    fun toSplashFragment(){
+        supportFragmentManager.beginTransaction().replace(R.id.container, SplashFragment()).commit()
+    }
+
 }
