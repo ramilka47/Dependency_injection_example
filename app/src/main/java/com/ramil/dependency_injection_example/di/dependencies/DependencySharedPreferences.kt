@@ -1,0 +1,5 @@
+package com.ramil.dependency_injection_example.di.dependencies
+
+import android.content.SharedPreferences
+
+class DependencySharedPreferences(val sharedPreferences: SharedPreferences)

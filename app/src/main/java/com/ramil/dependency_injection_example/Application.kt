@@ -11,16 +11,14 @@ class Application : Application() {
         lateinit var injector: Injector
     }
 
-    init {
-        injector = ImplInjector
-            .Builder()
-            .dependencySendService(ImplSendService())
-            .build()
-    }
-
     override fun onCreate() {
         super.onCreate()
 
+        injector = ImplInjector
+            .Builder()
+            .dependencySendService(ImplSendService())
+            .dependencySharedPreferences(applicationContext)
+            .build()
         // Если нужно включить контекст(допустим для создания базы данных или sharedPreference, или еще чего-нибудь, то инициализировать инжектор надо тут)
     }
 
